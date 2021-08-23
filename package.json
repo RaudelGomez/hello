@@ -10,6 +10,8 @@
     "gulp": "^4.0.2",
     "gulp-postcss": "^9.0.0",
     "gulp-watch": "^5.0.1",
+    "gulp4-run-sequence": "^1.0.1",
+    "postcss": "^8.3.6",
     "postcss-nested": "^5.0.6",
     "postcss-simple-vars": "^6.0.3"
   }

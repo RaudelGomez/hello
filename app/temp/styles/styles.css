@@ -1,4 +1,14 @@
 body {
-	padding: 10px;
-	margin-left: 10px;
+	color: #2f5572;
+	padding: 100px;
+	margin: 10px;
+	-moz-columns: 300px 2;
+	     columns: 300px 2;
+
 }
+
+.box a {
+		display: block;
+		padding: 10px;
+	}
+
