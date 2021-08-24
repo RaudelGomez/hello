@@ -10,10 +10,6 @@ var mixins = require('postcss-mixins');
 var browserSync = require('browser-sync').create();
 
 
-gulp.task('default', function() {
-  console.log("Hooray - you created a Gulp task.");
-});
-
 gulp.task('html', function() {
   browserSync.reload();
 });
