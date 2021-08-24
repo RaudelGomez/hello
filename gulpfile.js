@@ -6,6 +6,8 @@ var autoprefixer = require('autoprefixer');
 var cssvars = require('postcss-simple-vars');
 var nested = require('postcss-nested');
 var cssImport = require('postcss-import');
+var mixins = require('postcss-mixins');
+var browserSync = require('browser-sync').create();
 
 
 gulp.task('default', function() {
@@ -13,16 +15,30 @@ gulp.task('default', function() {
 });
 
 gulp.task('html', function() {
-  console.log("Imagine something useful being done to your HTML here.");
+  browserSync.reload();
 });
 
 gulp.task('styles', function() {
 
   return gulp.src('./app/assets/styles/styles.css')
-	  .pipe(postcss([cssImport, cssvars({ silent: true }), nested, autoprefixer]))
+	  .pipe(postcss([mixins, cssImport, cssvars({ silent: true }), nested, autoprefixer]))
 	  .pipe(gulp.dest('./app/temp/styles'));
 });
 
+gulp.task('initial', function() {
 
-gulp.task('watch', gulp.parallel('html','styles'));
+  browserSync.init({
+    server: {
+      baseDir: "app"
+    }
+  });
+
+});
+
+ gulp.task('cssInject', function() {
+    return gulp.src('./app/assets/styles/styles.css')
+    .pipe(browserSync.stream());
+});
+
+gulp.task('watch', gulp.parallel('initial', 'html', 'styles', 'cssInject'));
 
