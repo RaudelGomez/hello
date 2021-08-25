@@ -7,19 +7,24 @@ var cssvars = require('postcss-simple-vars');
 var nested = require('postcss-nested');
 var cssImport = require('postcss-import');
 var mixins = require('postcss-mixins');
-var browserSync = require('browser-sync').create();
+var browserSync = require('browser-sync').create(); 
 
+gulp.task('default', function() {
+  console.log("hola");
+});
 
-
+gulp.task('html', function() {
+  browserSync.reload();
+});
 
 gulp.task('styles', function() {
-
   return gulp.src('./app/assets/styles/styles.css')
     .pipe(postcss([mixins, cssImport, cssvars({ silent: true }), nested, autoprefixer]))
     .pipe(gulp.dest('./app/temp/styles'));
 });
 
-gulp.task('initial', function() {
+gulp.task('watch', function() {
+  
 
   browserSync.init({
     server: {
@@ -27,18 +32,12 @@ gulp.task('initial', function() {
     }
   });
 
-  gulp.task('./app/index.html', function() {
-  browserSync.reload();
-  });
-
+  gulp.watch('./app/index.html', gulp.series(['html'])); 
+  gulp.watch('./app/assets/styles/**/*.css', gulp.series(['styles', 'cssInject']));
 });
 
- gulp.task('cssInject', gulp.series('styles'), function() {
+
+gulp.task('cssInject', function() {
     return gulp.src('./app/temp/styles/styles.css')
     .pipe(browserSync.stream());
 });
-
-gulp.task('watch', gulp.series('initial', 'cssInject'));
-
-gulp.task('default', gulp.series('watch'));
-
