@@ -9,19 +9,15 @@ var cssImport = require('postcss-import');
 var mixins = require('postcss-mixins');
 var browserSync = require('browser-sync').create(); 
 
-gulp.task('default', function() {
-  console.log("hola");
-});
-
-
+//Tarea Styles
 gulp.task('styles', function() {
   return gulp.src('./app/assets/styles/styles.css')
     .pipe(postcss([mixins, cssImport, cssvars({ silent: true }), nested, autoprefixer]))
     .pipe(gulp.dest('./app/temp/styles'));
 });
 
+//Tarea Watch
 gulp.task('watch', function() {
-  
 
   browserSync.init({
     server: {
@@ -33,7 +29,7 @@ gulp.task('watch', function() {
   gulp.watch('./app/assets/styles/**/*.css', gulp.series(['styles', 'cssInject']));
 });
 
-
+//Tarea Inject
 gulp.task('cssInject', function() {
     return gulp.src('./app/temp/styles/styles.css')
     .pipe(browserSync.stream());
