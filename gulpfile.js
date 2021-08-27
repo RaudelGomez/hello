@@ -10,7 +10,6 @@ var mixins = require('postcss-mixins');
 var browserSync = require('browser-sync').create(); 
 var svgSprite = require('gulp-svg-sprite');
 var rename = require('gulp-rename');
-var del = require('del');
 
 
 //Tarea Sprite
@@ -27,9 +26,7 @@ var config = {
   }
 }
 
-gulp.task('beginClean', function() {
-  return del(['app/temp/sprite']);
-});
+
 
 
 gulp.task('createSprite', function() {
