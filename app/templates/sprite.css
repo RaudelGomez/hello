@@ -1,0 +1,15 @@
+/* Este doccumento se genera automaticamente por gulp. No editar directamente*/
+/* Para editar ir a la carpeta app/templates/sprite*/
+{{#shapes}}
+
+	{{#first}}
+		background-image: url('/temp/sprite/css/{{{sprite}}}');
+	{{/first}}
+
+	.icon--{{base}} {
+		width: {{width.outer}}px;
+		height: {{height.outer}}px ;
+		background-position: {{position.relative.xy}} ;
+	}
+{{/shapes}}
+
