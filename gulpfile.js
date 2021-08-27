@@ -10,6 +10,7 @@ var mixins = require('postcss-mixins');
 var browserSync = require('browser-sync').create(); 
 var svgSprite = require('gulp-svg-sprite');
 var rename = require('gulp-rename');
+var hexrgba = require('postcss-hexrgba');
 
 
 //Tarea Sprite
@@ -46,7 +47,7 @@ gulp.task('icons', gulp.series(['createSprite', 'copySpriteCSS']));
 //Tarea Styles
 gulp.task('styles', function() {
   return gulp.src('./app/assets/styles/styles.css')
-    .pipe(postcss([mixins, cssImport, cssvars({ silent: true }), nested, autoprefixer]))
+    .pipe(postcss([mixins, cssImport, cssvars({ silent: true }), nested, hexrgba, autoprefixer]))
     .pipe(gulp.dest('./app/temp/styles'));
 });
 
