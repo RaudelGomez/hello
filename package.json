@@ -20,6 +20,8 @@
     "postcss-import": "^14.0.2",
     "postcss-mixins": "^8.1.0",
     "postcss-nested": "^5.0.6",
-    "postcss-simple-vars": "^6.0.3"
+    "postcss-simple-vars": "^6.0.3",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
   }
 }

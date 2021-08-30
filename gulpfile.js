@@ -11,6 +11,15 @@ var browserSync = require('browser-sync').create();
 var svgSprite = require('gulp-svg-sprite');
 var rename = require('gulp-rename');
 var hexrgba = require('postcss-hexrgba');
+var webpack = require('webpack');
+
+//Tarea iniciar webpack
+gulp.task('scripts', function(callback) {
+  webpack(require('./webpack.config.js'), function() {
+    console.log("webpack cargado");
+    callback();
+  });
+});
 
 
 //Tarea Sprite
@@ -62,6 +71,8 @@ gulp.task('watch', function() {
 
   gulp.watch('./app/index.html').on('change', browserSync.reload); 
   gulp.watch('./app/assets/styles/**/*.css', gulp.series(['styles', 'cssInject']));
+  gulp.watch('./app/assets/scripts/**/*.js', gulp.series(['scripts', 'resfreshScripts']));
+  
 });
 
 //Tarea Inject
@@ -69,5 +80,12 @@ gulp.task('cssInject', function() {
     return gulp.src('./app/temp/styles/styles.css')
     .pipe(browserSync.stream());
 });
+
+//Tarea refrescar scripts
+gulp.task('resfreshScripts', function() {
+    return gulp.src('./app/assets/scripts/**/*.js')
+    .pipe(browserSync.stream());
+});
+
 
 
