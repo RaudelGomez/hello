@@ -1228,5 +1228,16 @@ background-image: url('/temp/sprite/css/svg/sprite.css-e1abb911.svg');
 	}
 	}
 
+.reveal-item {
+	opacity: 0;
+	transition: all 1.5s ease-out;
+	transform: scale(1.15);
+}
+
+.reveal-item--is-visible {
+		opacity: 1;
+		transform: scale(1);
+	}
+
 
 
