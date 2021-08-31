@@ -1,21 +1,3 @@
-var $ = require('jquery');
-//Jascript
-//var Person = require('./modules/Person');
+import MobileMenu from './modules/MobileMenu';
 
-//ESM6
-import Person from './modules/Person';
-
-class Adult extends Person {
-	pagar() {
-		console.log(this.nombre + " no debe nada.");
-	}
-}
-
-alert("cargo");
-
-var Raudel = new Person("Raudel", "naranja");
-Raudel.saludo();
-
-var Feli = new Adult("Felizia", "negro");
-Feli.saludo();
-Feli.pagar();
+var mobileMenu = new MobileMenu();
