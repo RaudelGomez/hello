@@ -1273,8 +1273,17 @@ background-image: url('/temp/sprite/css/svg/sprite.css-e1abb911.svg');
 	right: 0;
 	opacity: 0;
 	visibility: hidden;
+	transform: scale(1.2);
+	transition: all .3s ease-out;
 
 }
+
+.modal--is-visible {
+		opacity: 1;
+		visibility: visible;
+		transform: scale(1);
+
+	}
 
 .modal__inner {
 		position: absolute;
